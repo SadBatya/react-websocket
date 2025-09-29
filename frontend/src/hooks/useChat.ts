@@ -7,7 +7,13 @@ interface Params {
 
 export const useChat = ({ url, name }: Params) => {
   const [connected, setConnected] = useState(false);
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<
+    {
+      from: string;
+      text: string;
+      at: number;
+    }[]
+  >([]);
 
   const wsRef = useRef<null | WebSocket>(null); // хранит текущее состояние ws
 
